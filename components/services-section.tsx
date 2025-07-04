@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
-import { Search } from "lucide-react"
-import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Search } from "lucide-react"
+import { useState } from "react"
 
 interface Service {
   id: string
@@ -13,12 +13,18 @@ interface Service {
   category: string
 }
 
+interface Category {
+  name: string
+  icon: string // path gambar
+}
+
 interface ServicesSectionProps {
   services: Service[]
-  categories: string[]
+  categories: Category[]
   onServiceClick?: (service: Service) => void
   onCategoryClick?: (category: string) => void
 }
+
 
 export default function ServicesSection({
   services,
@@ -35,7 +41,7 @@ export default function ServicesSection({
   )
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-orange-500 mb-4">Layanan Kota Parepare</h2>
@@ -59,11 +65,13 @@ export default function ServicesSection({
               className="hover:shadow-lg transition-shadow cursor-pointer"
               onClick={() => onServiceClick?.(service)}
             >
-              <CardContent className="p-6 text-center">
-                <div className="text-4xl mb-4 text-green-500">{service.icon}</div>
-                <h3 className="font-semibold text-lg mb-2">{service.name}</h3>
-                <p className="text-gray-600 text-sm">{service.description}</p>
-              </CardContent>
+              <CardContent className="p-6 text-center flex flex-col items-center justify-center">
+              <div className="w-16 h-16 flex items-center justify-center mb-4 rounded-full bg-green-100">
+                {service.icon}
+              </div>
+              <h3 className="font-semibold text-lg mb-2">{service.name}</h3>
+              <p className="text-gray-600 text-sm">{service.description}</p>
+            </CardContent>
             </Card>
           ))}
         </div>
@@ -73,17 +81,17 @@ export default function ServicesSection({
           <h3 className="text-2xl font-bold text-orange-500 mb-8">Kategori Layanan</h3>
           <p className="text-gray-600 mb-8">Temukan aplikasi dan pelayanan di Kota Parepare berdasarkan kategori!</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <Card
-                key={category}
+                key={category.name}
                 className="hover:shadow-lg transition-shadow cursor-pointer"
-                onClick={() => onCategoryClick?.(category)}
+                onClick={() => onCategoryClick?.(category.name)}
               >
                 <CardContent className="p-6 text-center">
                   <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
-                    <span className="text-white text-2xl">👥</span>
+                    <img src={category.icon} alt={category.name} className="w-8 h-8 object-contain" />
                   </div>
-                  <h3 className="font-semibold text-lg">{category}</h3>
+                  <h3 className="font-semibold text-lg">{category.name}</h3>
                 </CardContent>
               </Card>
             ))}
