@@ -53,14 +53,14 @@ export default function ServicesSection({
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-left mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-orange-500 mb-4">Layanan Kota Parepare</h2>
-          <p className="text-gray-600 mb-8">Temukan aplikasi dan pelayanan di Kota Parepare</p>
-          <div className="max-w-2xl mx-auto relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-8 h-8" />
+          <p className="text-blue-900 mb-8 font-semibold">Temukan aplikasi dan pelayanan di Kota Parepare</p>
+          <div className="relative w-full md:w-[1230px]">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6 md:w-8 md:h-8" />
             <Input
-              placeholder="Cari Layanan"
-              className="pl-12 py-6 text-lg rounded-xl border-2"
+              placeholder="Cari layanan"
+              className="pl-12 py-6 text-lg rounded-xl border-2 border-gray-300"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
