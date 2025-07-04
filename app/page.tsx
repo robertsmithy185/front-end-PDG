@@ -1,25 +1,26 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import Navbar from "@/components/navbar"
-import HeroSection from "@/components/hero-section"
-import ServicesSection from "@/components/services-section"
 import Carousel from "@/components/carousel"
 import Footer from "@/components/footer"
+import HeroSection from "@/components/hero-section"
+import Navbar from "@/components/navbar"
+import ServicesSection from "@/components/services-section"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { ReactNode, useEffect, useRef, useState } from "react"
 
 // Types for API data
 interface Service {
   id: string
   name: string
   description: string
-  icon: string
+  icon: ReactNode
   category: string
 }
 
 interface TourismDestination {
   id: string
-  name: string
+  title: string
   image: string
   description: string
 }
@@ -37,52 +38,106 @@ export default function ParepareLandingPage() {
   const [destinations, setDestinations] = useState<TourismDestination[]>([])
   const [news, setNews] = useState<NewsItem[]>([])
   const router = useRouter()
+  const newsSectionRef = useRef<HTMLDivElement>(null)
+
 
   // Mock API calls - replace with actual API endpoints
   useEffect(() => {
     // Mock services data
     setServices([
-      { id: "1", name: "Pendidikan", description: "Layanan Pendidikan", icon: "🎓", category: "education" },
-      { id: "2", name: "Keuangan", description: "Layanan Keuangan", icon: "💰", category: "finance" },
-      { id: "3", name: "Kesehatan", description: "Layanan Kesehatan", icon: "🏥", category: "health" },
-      { id: "4", name: "Perdagangan", description: "Layanan Perdagangan", icon: "🛒", category: "trade" },
+      {
+        id: "1",
+        name: "Pendidikan",
+        description: "Layanan Pendidikan",
+        icon: (
+          <Image
+            src="/images/IconSekolah.svg"
+            alt="Icon Sekolah"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "education"
+      },
+      {
+        id: "2",
+        name: "Keuangan",
+        description: "Layanan Keuangan",
+        icon: (
+          <Image
+            src="/images/IconKeuangan.svg"
+            alt="Icon Keuangan"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "finance"
+      },
+      {
+        id: "3",
+        name: "Kesehatan",
+        description: "Layanan Kesehatan",
+        icon: (
+          <Image
+            src="/images/IconKesehatan.svg"
+            alt="Icon Kesehatan"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "health"
+      },
+      {
+        id: "4",
+        name: "Perdagangan",
+        description: "Layanan Perdagangan",
+        icon: (
+          <Image
+            src="/images/IconPerdagangan.svg"
+            alt="Icon Perdagangan"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "trade"
+      }
     ])
-
+  
     // Mock destinations data
     setDestinations([
       {
         id: "1",
-        name: "Pelabuhan Nusantara",
+        title: "Pelabuhan Nusantara",
         image: "/placeholder.svg?height=300&width=400",
         description: "Pelabuhan utama Parepare",
       },
       {
         id: "2",
-        name: "Monument B.J. Habibie dan Ainun",
+        title: "Monument B.J. Habibie dan Ainun",
         image: "/placeholder.svg?height=300&width=400",
         description: "Monument bersejarah",
       },
       {
         id: "3",
-        name: "Ladoma Resort",
+        title: "Ladoma Resort",
         image: "/placeholder.svg?height=300&width=400",
         description: "Resort wisata alam",
       },
       {
         id: "4",
-        name: "Bulu Nepo",
+        title: "Bulu Nepo",
         image: "/placeholder.svg?height=300&width=400",
         description: "Wisata alam pegunungan",
       },
       {
         id: "5",
-        name: "Tonrangeng River Side",
+        title: "Tonrangeng River Side",
         image: "/placeholder.svg?height=300&width=400",
         description: "Wisata sungai",
       },
       {
         id: "6",
-        name: "Pantai Lumpue",
+        title: "Pantai Lumpue",
         image: "/placeholder.svg?height=300&width=400",
         description: "Pantai indah di Parepare",
       },
@@ -129,7 +184,7 @@ export default function ParepareLandingPage() {
   }, [])
 
   const handleServiceClick = (service: Service) => {
-    if (service.name === "Keuangan") {
+    if (service.name === "Perdagangan") {
       router.push("/layanan/sobat-harga")
     }
     // Add other service routes here
@@ -157,7 +212,7 @@ export default function ParepareLandingPage() {
   // Transform data for carousel components
   const destinationItems = destinations.map((dest) => ({
     id: dest.id,
-    title: dest.name,
+    title: dest.title,
     image: dest.image,
     description: dest.description,
   }))
@@ -170,23 +225,33 @@ export default function ParepareLandingPage() {
     date: item.date,
   }))
 
-  const categories = ["Wirausaha", "Wisatawan", "Pelajar", "Masyarakat"]
+  const categories = [
+  { name: 'Wirausaha', icon: '/images/Wirausaha.svg' },
+  { name: 'Wisatawan', icon: '/images/Wisatawan.svg' },
+  { name: 'Pelajar', icon: '/images/Pelajar.svg' },
+  { name: 'Masyarakat', icon: '/images/Masyarakat.svg' },
+]
+  const scrollToNews = () => {
+    newsSectionRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+      {/* Navbar dengan prop scrollToNews */}
+      <Navbar onScrollToNews={scrollToNews} />
 
+      {/* Hero Section */}
       <HeroSection
         title="Parepare dalam Genggaman"
         subtitle="Layanan digital kota Parepare, mudah diakses, cepat, dan terpercaya—semuanya hanya dalam satu genggaman."
         description="Temukan berbagai layanan publik, informasi kota, dan pelaporan langsung dari masyarakat."
         ctaText="Jelajahi Layanan"
         onCtaClick={() => {
-          // Scroll to services section or navigate
           document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })
         }}
       />
 
+      {/* Services Section */}
       <div id="services">
         <ServicesSection
           services={services}
@@ -196,6 +261,7 @@ export default function ParepareLandingPage() {
         />
       </div>
 
+      {/* Carousel Wisata */}
       <Carousel
         title="Destinasi Wisata di Kota Parepare"
         subtitle="Lihat berbagai macam penawaran menarik disini"
@@ -204,17 +270,21 @@ export default function ParepareLandingPage() {
         onItemClick={handleDestinationClick}
       />
 
-      <Carousel
-        title="Berita Utama"
-        subtitle="Berita Seputar Kota Parepare"
-        items={newsItems}
-        variant="news"
-        showButton={true}
-        buttonText="Lihat Semua"
-        onButtonClick={handleViewAllNews}
-        onItemClick={handleNewsClick}
-      />
+      {/* Carousel Berita dengan ref */}
+      <div ref={newsSectionRef}>
+        <Carousel
+          title="Berita Utama"
+          subtitle="Berita Seputar Kota Parepare"
+          items={newsItems}
+          variant="news"
+          showButton={true}
+          buttonText="Lihat Semua"
+          onButtonClick={handleViewAllNews}
+          onItemClick={handleNewsClick}
+        />
+      </div>
 
+      {/* Footer */}
       <Footer />
     </div>
   )
