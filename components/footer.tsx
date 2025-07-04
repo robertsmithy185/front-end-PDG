@@ -22,9 +22,9 @@ interface FooterProps {
 
 export default function Footer({
   contactInfo = {
-    address: "345 Faulconer Drive, Suite 4 • Charlottesville, CA, 12345",
-    phone: "(123) 456-7890",
-    fax: "(123) 456-7890",
+    address: "Jl. Jenderal Sudirman No.78, Bumi Harapan, Kec. Bacukiki Bar., Kota Parepare, Sulawesi Selatan 91122",
+    phone: "(0421) 21512",
+    fax: "(0421) 21512",
   },
   aboutSections = [
     {

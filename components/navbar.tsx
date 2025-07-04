@@ -84,7 +84,7 @@ export default function Navbar({ onScrollToNews }: NavbarProps) {
         <div className="hidden md:block">
           <Link
             href="/login"
-            className="bg-green-600 text-white font-medium px-4 py-2 rounded-full shadow hover:bg-green-700 transition-colors"
+            className="bg-[#FF9100] text-white font-medium px-6 py-3 rounded-full shadow hover:bg-[#FF9100]/80 transition-colors"
           >
             Login
           </Link>
@@ -132,7 +132,7 @@ export default function Navbar({ onScrollToNews }: NavbarProps) {
           ))}
           <Link
             href="/login"
-            className="block text-center mt-4 bg-green-600 text-white font-medium px-4 py-2 rounded-full shadow hover:bg-green-700 transition-colors"
+            className="block text-center mt-4 bg-[#FF9100] text-white font-medium px-4 py-2 rounded-full shadow hover:bg-[#FF9100]/80 transition-colors"
           >
             Login
           </Link>
