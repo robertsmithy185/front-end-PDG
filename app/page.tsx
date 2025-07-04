@@ -234,40 +234,70 @@ export default function ParepareLandingPage() {
       {
         id: "1",
         title: "Pelabuhan Nusantara",
-        image: "/placeholder.svg?height=300&width=400",
-        description: "Pelabuhan utama Parepare",
+        image: "/destinasi/kapal.jpg",
+        description: "Pelabuhan utama dan spot sunset favorit di Parepare.",
       },
       {
         id: "2",
-        title: "Monument B.J. Habibie dan Ainun",
-        image: "/placeholder.svg?height=300&width=400",
-        description: "Monument bersejarah",
+        title: "Monumen Cinta Sejati Habibie & Ainun",
+        image: "/destinasi/monumen.jpeg",
+        description: "Monumen ikonik yang melambangkan cinta sejati.",
       },
       {
         id: "3",
         title: "Ladoma Resort",
-        image: "/placeholder.svg?height=300&width=400",
-        description: "Resort wisata alam",
+        image: "/destinasi/ladoma-resort.jpg",
+        description: "Resort mewah di tepi laut, cocok untuk liburan santai.",
       },
       {
         id: "4",
         title: "Bulu Nepo",
-        image: "/placeholder.svg?height=300&width=400",
-        description: "Wisata alam pegunungan",
+        image: "/destinasi/bulu-nepo.jpg",
+        description: "Wisata alam perbukitan dengan pemandangan kota dari atas.",
       },
       {
         id: "5",
         title: "Tonrangeng River Side",
-        image: "/placeholder.svg?height=300&width=400",
-        description: "Wisata sungai",
+        image: "/destinasi/tonrangeng.jpg",
+        description: "Taman sungai yang indah dengan jembatan unik dan laut.",
       },
       {
         id: "6",
         title: "Pantai Lumpue",
-        image: "/placeholder.svg?height=300&width=400",
-        description: "Pantai indah di Parepare",
+        image: "/destinasi/pantai-lumpue.jpg",
+        description: "Pantai tenang dengan pasir bersih dan suasana santai.",
       },
-    ])
+      {
+        id: "7",
+        title: "Pantai Paputo",
+        image: "/destinasi/pantai-paputo.jpg",
+        description: "Pantai pasir putih yang cocok untuk liburan keluarga.",
+      },
+      {
+        id: "8",
+        title: "Jembatan Kembar Parepare",
+        image: "/destinasi/jembatan-kembar.jpg",
+        description: "Jembatan ikonik dengan pemandangan indah saat malam hari.",
+      },
+      {
+        id: "9",
+        title: "Masjid Terapung BJ Habibie",
+        image: "/destinasi/masjid-terapung.jpg",
+        description: "Masjid modern di atas laut, tempat ibadah dan wisata religi.",
+      },
+      {
+        id: "10",
+        title: "Taman Mattirotasi",
+        image: "/destinasi/taman-mattirotasi.jpg",
+        description: "Taman kota yang nyaman untuk jogging dan bersantai.",
+      },
+      {
+        id: "11",
+        title: "Kuliner Soreang & Pasar Senggol",
+        image: "/destinasi/kuliner-soreang.jpg",
+        description: "Sentra makanan khas Parepare yang ramai di malam hari.",
+      },
+    ]);
 
     // Mock news data
     setNews([

@@ -55,7 +55,7 @@ export default function Carousel({
         <div className="flex justify-between items-center mb-8">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-orange-500 mb-4">{title}</h2>
-            {subtitle && <p className="text-gray-600">{subtitle}</p>}
+            {subtitle && <p className="text-[#083358]">{subtitle}</p>}
           </div>
           {showButton && (
             <Button
@@ -78,7 +78,7 @@ export default function Carousel({
               }}
             >
               {items.map((item) => (
-                <div key={item.id} className={`w-1/${itemsPerView} flex-shrink-0 px-3`}>
+                  <div key={item.id} className="flex-shrink-0 px-3" style={{width: `${variant === "tourism" ? 6 : 55 / itemsPerView}%`}}>
                   <Card
                     className="overflow-hidden hover:shadow-lg transition-shadow h-full cursor-pointer"
                     onClick={() => onItemClick?.(item)}
@@ -108,28 +108,28 @@ export default function Carousel({
             </div>
           </div>
 
-          {items.length > itemsPerView && (
-            <>
-              <Button
-                variant="outline"
-                size="icon"
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg z-10"
-                onClick={prevSlide}
-                disabled={currentIndex === 0}
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg z-10"
-                onClick={nextSlide}
-                disabled={currentIndex >= items.length - itemsPerView}
-              >
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </>
-          )}
+        {items.length > itemsPerView && (
+          <>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg z-10 rounded-full w-10 h-10"
+              onClick={prevSlide}
+              disabled={currentIndex === 0}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-lg z-10 rounded-full w-10 h-10"
+              onClick={nextSlide}
+              disabled={currentIndex >= items.length - itemsPerView}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </>
+        )}
         </div>
       </div>
     </section>
