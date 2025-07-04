@@ -185,7 +185,7 @@ export default function ParepareLandingPage() {
 
   const handleServiceClick = (service: Service) => {
     if (service.name === "Perdagangan") {
-      router.push("/layanan/sobat-harga")
+      router.push("/Dinas_Pedangan")
     }
     // Add other service routes here
   }
