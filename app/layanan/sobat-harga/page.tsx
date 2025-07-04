@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { ArrowLeft, TrendingUp, TrendingDown, Minus } from "lucide-react"
+import Navbar from "@/components/navbar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
-import Navbar from "@/components/navbar"
+import { ArrowLeft, Minus, TrendingDown, TrendingUp } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 
 // Types for API data
 interface PriceData {
@@ -128,7 +128,7 @@ export default function SobatHargaPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <Navbar variant="service" />
+      <Navbar/>
 
       <div className="container mx-auto px-4 pt-24 pb-16">
         {/* Header */}
