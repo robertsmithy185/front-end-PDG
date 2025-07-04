@@ -1,9 +1,9 @@
 "use client"
 
+import { useRef, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Search } from "lucide-react"
-import { useState } from "react"
+import { Search, ChevronLeft, ChevronRight } from "lucide-react"
 
 interface Service {
   id: string
@@ -25,7 +25,6 @@ interface ServicesSectionProps {
   onCategoryClick?: (category: string) => void
 }
 
-
 export default function ServicesSection({
   services,
   categories,
@@ -33,12 +32,23 @@ export default function ServicesSection({
   onCategoryClick,
 }: ServicesSectionProps) {
   const [searchTerm, setSearchTerm] = useState("")
+  const scrollRef = useRef<HTMLDivElement>(null)
 
   const filteredServices = services.filter(
     (service) =>
       service.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       service.description.toLowerCase().includes(searchTerm.toLowerCase()),
   )
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 300
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      })
+    }
+  }
 
   return (
     <section className="py-16 bg-white">
@@ -57,23 +67,44 @@ export default function ServicesSection({
           </div>
         </div>
 
-        {/* Service Categories */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-          {filteredServices.map((service) => (
-            <Card
-              key={service.id}
-              className="hover:shadow-lg transition-shadow cursor-pointer"
-              onClick={() => onServiceClick?.(service)}
-            >
-              <CardContent className="p-6 text-center flex flex-col items-center justify-center">
-              <div className="w-16 h-16 flex items-center justify-center mb-4 rounded-full bg-green-100">
-                {service.icon}
-              </div>
-              <h3 className="font-semibold text-lg mb-2">{service.name}</h3>
-              <p className="text-gray-600 text-sm">{service.description}</p>
-            </CardContent>
-            </Card>
-          ))}
+        {/* Service Categories + Scroll Buttons */}
+        <div className="relative mb-12">
+          {/* Scroll Left Button */}
+          <button
+            onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow p-2 rounded-full"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          {/* Scrollable Container */}
+          <div ref={scrollRef} className="overflow-x-auto scroll-smooth scrollbar-hide">
+            <div className="flex gap-16 w-max max-w-full px-8">
+              {filteredServices.map((service) => (
+                <Card
+                  key={service.id}
+                  className="min-w-[250px] flex-shrink-0 hover:shadow-lg transition-shadow cursor-pointer"
+                  onClick={() => onServiceClick?.(service)}
+                >
+                  <CardContent className="p-6 text-center flex flex-col items-center justify-center">
+                    <div className="w-16 h-16 flex items-center justify-center mb-4 rounded-full bg-green-100 text-2xl">
+                      {service.icon}
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2">{service.name}</h3>
+                    <p className="text-gray-600 text-sm">{service.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Scroll Right Button */}
+          <button
+            onClick={() => scroll('right')}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow p-2 rounded-full"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
 
         {/* Category Services */}
