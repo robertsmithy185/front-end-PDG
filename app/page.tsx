@@ -57,7 +57,7 @@ export default function ParepareLandingPage() {
             height={40}
           />
         ),
-        category: "education"
+        category: "education",
       },
       {
         id: "2",
@@ -71,7 +71,7 @@ export default function ParepareLandingPage() {
             height={40}
           />
         ),
-        category: "finance"
+        category: "finance",
       },
       {
         id: "3",
@@ -85,10 +85,24 @@ export default function ParepareLandingPage() {
             height={40}
           />
         ),
-        category: "health"
+        category: "health",
       },
       {
         id: "4",
+        name: "Telekomunikasi",
+        description: "Layanan Telekomunikasi",
+        icon: (
+          <Image
+            src="/images/IconTelekomunikasi.svg"
+            alt="Icon Telekomunikasi"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "telecommunication",
+      },
+      {
+        id: "5",
         name: "Perdagangan",
         description: "Layanan Perdagangan",
         icon: (
@@ -99,10 +113,122 @@ export default function ParepareLandingPage() {
             height={40}
           />
         ),
-        category: "trade"
-      }
-    ])
-  
+        category: "trade",
+      },
+      {
+        id: "6",
+        name: "Industri",
+        description: "Layanan Industri",
+        icon: (
+          <Image
+            src="/images/IconIndustri.svg"
+            alt="Icon Industri"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "industry",
+      },
+      {
+        id: "7",
+        name: "Pariwisata",
+        description: "Layanan Pariwisata",
+        icon: (
+          <Image
+            src="/images/IconPariwisata.svg"
+            alt="Icon Pariwisata"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "tourism",
+      },
+      {
+        id: "8",
+        name: "Geografis",
+        description: "Informasi Geografis",
+        icon: (
+          <Image
+            src="/images/IconGeografis.svg"
+            alt="Icon Geografis"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "geography",
+      },
+      {
+        id: "9",
+        name: "Pemerintahan",
+        description: "Layanan Pemerintahan",
+        icon: (
+          <Image
+            src="/images/IconPemerintahan.svg"
+            alt="Icon Pemerintahan"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "government",
+      },
+      {
+        id: "10",
+        name: "Sosial",
+        description: "Layanan Sosial",
+        icon: (
+          <Image
+            src="/images/IconSosial.svg"
+            alt="Icon Sosial"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "social",
+      },
+      {
+        id: "11",
+        name: "Kependudukan",
+        description: "Layanan Kependudukan",
+        icon: (
+          <Image
+            src="/images/IconKependudukan.svg"
+            alt="Icon Kependudukan"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "population",
+      },
+      {
+        id: "12",
+        name: "Transportasi",
+        description: "Layanan Transportasi",
+        icon: (
+          <Image
+            src="/images/IconTransportasi.svg"
+            alt="Icon Transportasi"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "transportation",
+      },
+      {
+        id: "13",
+        name: "Pertanian",
+        description: "Layanan Pertanian",
+        icon: (
+          <Image
+            src="/images/IconPertanian.svg"
+            alt="Icon Pertanian"
+            width={40}
+            height={40}
+          />
+        ),
+        category: "agriculture",
+      },
+    ]);
+
     // Mock destinations data
     setDestinations([
       {
@@ -185,7 +311,7 @@ export default function ParepareLandingPage() {
 
   const handleServiceClick = (service: Service) => {
     if (service.name === "Perdagangan") {
-      router.push("/Dinas_Pedangan")
+      router.push("/Dinas_Perdagangan")
     }
     // Add other service routes here
   }
